@@ -1,0 +1,5 @@
+.env
+.vscode/settings.json
+cogs/__pycache__/cog_control.cpython-36.pyc
+cogs/__pycache__/examplecog.cpython-36.pyc
+cogs/__pycache__/verificaton.cpython-36.pyc
