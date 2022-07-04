@@ -9,11 +9,13 @@ Docker
 
      `git clone https://github.com/RileyCalhoun/VerificationBot && cd VerificationBot`
 
-2. Build the image:
+2. Create a `.env` file and put your bot token inside as `BOT_TOKEN`
+
+3. Build the image:
 
     `docker build -t verificationbot .`
 
-3. Run the container:
+4. Run the container:
 
     `docker run -d --name verificationbot verificationbot:latest`
 
@@ -26,10 +28,12 @@ Pyhon 3, Pip
      
      `git clone https://github.com/RileyCalhoun/VerificationBot && cd VerificationBot`
 
-2. Install the necessary dependencies:
+2. Create a `.env` file and put your bot token inside as `BOT_TOKEN`
+
+3. Install the necessary dependencies:
     
     `python3 -m pip install -U discord.py python-dotenv`
 
-3. Run the program:
+4. Run the program:
     
     `python3 ./index.py`
