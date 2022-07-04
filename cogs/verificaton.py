@@ -14,6 +14,7 @@ class Verification(commands.Cog):
     async def on_member_join(self, member):
         code = self.generate_code()
         await member.send(f"Your code is `{code}`")
+        print(f"Generated code for {member.name}: {code}")
         self.codes[member.id] = code
         
     @commands.command()
@@ -22,19 +23,22 @@ class Verification(commands.Cog):
         role = ctx.guild.get_role(993310313011232768) # get verified role
         if role in author.roles:
             await ctx.send("You are already verified!")
+            print(f"{author.name} tried to verify but already did.")
             return
 
         if author.id not in self.codes:
             self.codes[author.id] = self.generate_code()
-            author.send(f"Your code is {self.codes[author.id]}")
+            author.send(f"Your code is `{self.codes[author.id]}`")
+            print(f"Generated code for {author.name}: {self.codes[author.id]}")
 
         code = self.codes[author.id]
-        print(token == code)
         if token == code:
             await author.add_roles(role) # add the role to the user
             await ctx.send("You have successfully verified your account!") # send verification message
+            print(f"{author.name} has been verified using code {code}")
         else:
             await ctx.send("That is an invalid code!")
+            print(f"{author.name} tried to verify with code {token}")
 
     @verify.error
     async def on_command_error(self, ctx, error):
@@ -42,11 +46,13 @@ class Verification(commands.Cog):
         role = ctx.guild.get_role(993310313011232768) # get verified role
         if role in author.roles:
             await ctx.send("You are already verified!")
+            print(f"{author.name} tried to verify but already did.")
             return
 
         if author.id not in self.codes:
             self.codes[author.id] = self.generate_code()
-            await author.send(f"Your code is {self.codes[author.id]}")
+            await author.send(f"Your code is `{self.codes[author.id]}`")
+            print(f"Generated code for {author.name}: {self.codes[author.id]}")
 
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.send("You must specify a code!")
@@ -61,4 +67,8 @@ class Verification(commands.Cog):
 
 
 def setup(bot):
+    print("Registering Verification Handler")
     bot.add_cog(Verification(bot))
+
+def teardown(bot):
+    print("Taking down Verification Handler")
