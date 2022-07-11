@@ -36,8 +36,8 @@ Pyhon 3,8, Pip
 
 3. Install the necessary dependencies:
     
-    `python3 -m pip install -U discord.py python-dotenv`
+    `python3.8 -m pip install -U discord.py python-dotenv`
 
 4. Run the program:
     
-    `python3 ./index.py`
+    `python3.8 -u ./index.py`
