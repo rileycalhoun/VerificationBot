@@ -4,6 +4,8 @@ RUN apt update -y \
         && apt upgrade -y
 
 RUN apt install python3.8 python3-pip -y
+
+RUN python3.8 -m pip install --upgrade pip
 RUN python3.8 -m pip install -U discord.py python-dotenv
 
 RUN mkdir /usr/local/DiscordVerification
