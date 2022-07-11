@@ -1,8 +1,12 @@
 
+from os import getenv
 from discord import utils
 from random import sample, shuffle
 from string import ascii_letters, digits
 from discord.ext import commands
+
+# MUST BE AN ID
+VERIFIED_ROLE = int(getenv('VERIFIED_ROLE'))
 
 class Verification(commands.Cog):
     
@@ -20,7 +24,8 @@ class Verification(commands.Cog):
     @commands.command()
     async def verify(self, ctx, *, token: str):
         author = ctx.message.author
-        role = ctx.guild.get_role(993310313011232768) # get verified role
+        role = ctx.guild.get_role(VERIFIED_ROLE) # get verified role
+
         if role in author.roles:
             await ctx.send("You are already verified!")
             print(f"{author.name} tried to verify but already did.")
@@ -43,7 +48,7 @@ class Verification(commands.Cog):
     @verify.error
     async def on_command_error(self, ctx, error):
         author = ctx.message.author
-        role = ctx.guild.get_role(993310313011232768) # get verified role
+        role = ctx.guild.get_role(VERIFIED_ROLE) # get verified role
         if role in author.roles:
             await ctx.send("You are already verified!")
             print(f"{author.name} tried to verify but already did.")

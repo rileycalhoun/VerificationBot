@@ -6,7 +6,7 @@ from discord.ext import commands, tasks
 
 load_dotenv()
 
-description = '''A verification bot for Alkarab Technologies Discord Servers.'''
+description = "A bot!"
 
 intents = Intents.default()
 intents.members = True
