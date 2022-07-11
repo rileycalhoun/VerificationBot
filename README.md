@@ -21,9 +21,13 @@ Docker
 
 ## Run without Docker
 ### Requirements
-Pyhon 3, Pip
+Pyhon 3,8, Pip
 
 ### Installation
+1. Ensure your PIP version is up-to-date:
+
+     `python3.8 -m pip install --upgrade pip`
+
 1. Clone the repository:
      
      `git clone https://github.com/RileyCalhoun/VerificationBot && cd VerificationBot`
